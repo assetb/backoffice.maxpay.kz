@@ -32,21 +32,21 @@ function Payments() {
       case 1:
         return "Выплата";
       case 2:
-        return "RECURRENT";
+        return "Рекуррент";
       case 3:
-        return "RECURRENT_PAYOUT";
+        return "Рекуррентный вывод";
       case 4:
-        return "APPLE_PAY";
+        return "APPLE PAY";
       case 5:
-        return "PHONE_PAYOUT";
+        return "Вывод на телефон";
       case 6:
-        return "ONE_TIME_PAYMENT";
+        return "Подписка";
       case 7:
         return "P2P";
       case 8:
-        return "SAMSUNG_PAY";
+        return "SAMSUNG PAY";
       case 10:
-        return "GOOGLE_PAY";
+        return "GOOGLE PAY";
       case 11:
         return "Перевод";
       case 13:
@@ -93,8 +93,34 @@ function Payments() {
     { name: "Номер заказа", selector: row => row.reference_id, sortable: true, width: "150px" },
     { name: "Тип", selector: row => getTypeLabel(row.type), sortable: true, width: "150px" },
     { name: "Статус", selector: row => getStatusLabel(row.status), sortable: true, width: "120px" },
+    { name: "Маска карты", selector: row => row.masked_pan, sortable: true },
     { name: "Сумма", selector: row => row.amount, sortable: true, width: "120px" },
-    { name: "Валюта", selector: row => row.currency, sortable: true, width: "100px" }
+    { name: "Валюта", selector: row => row.currency, sortable: true, width: "100px" },
+    { name: "Назначение", selector: row => row.description, sortable: true, width: "150px" },
+    { name: "Коммент", selector: row => row.comment, sortable: true, width: "150px" },
+    { name: "Комиссия банка", selector: row => row.bank_commission, sortable: true, width: "120px" },
+    { name: "Комиссия мерчанта", selector: row => row.merchant_commission, sortable: true, width: "120px" },
+    { name: "Сумма возврата", selector: row => row.refund_amount, sortable: true, width: "120px" },
+    { name: "Причина Возврата", selector: row => row.refund_reason, sortable: true, width: "150px" },
+    { name: "ID юзера", selector: row => row.user_id, sortable: true, width: "120px" },
+    { name: "Телефон", selector: row => row.user_phone, sortable: true, width: "150px" },
+    { name: "Email", selector: row => row.user_email, sortable: true, width: "150px" },
+    { name: "Время завершения", selector: row => row.finished_at, sortable: true, width: "150px" },
+    {
+      name: "Время создания",
+      selector: row => new Date(row.created_at).toLocaleString(),
+      sortable: true,
+      width: "150px"
+    },
+    { name: "Эквайер", selector: row => row.acquirer_id, sortable: true, width: "120px" },
+    { name: "Эмитент", selector: row => row.bank_id, sortable: true, width: "120px" },
+    { name: "Попытки", selector: row => row.try, sortable: true, width: "100px" },
+    { name: "IP", selector: row => row.ip, sortable: true, width: "150px" },
+    { name: "TR тип", selector: row => getTrTypeLabel(row.tr_type), sortable: true, width: "150px" },
+    { name: "URL коллбэка", selector: row => row.back_url, sortable: true, width: "200px" },
+    { name: "URL мерчанта", selector: row => row.request_url, sortable: true, width: "200px" },
+    { name: "URL фейла", selector: row => row.fail_url, sortable: true, width: "200px" },
+    { name: "РРН", selector: row => row.rrn, sortable: true, width: "150px" }
   ];
 
   const exportToExcel = () => {
