@@ -6,6 +6,8 @@ import * as XLSX from "xlsx";
 function Payments() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [logs, setLogs] = useState(null);
+  const [selectedRow, setSelectedRow] = useState(null);
 
   const fetchData = async () => {
     setLoading(true);
@@ -72,36 +74,27 @@ function Payments() {
   const getIsTestLabel = isTest => (isTest ? "Да" : "Нет");
   const getTrTypeLabel = trType => (trType === 1 ? "Двустадийный" : "");
 
+  const handleRowClick = async row => {
+    setSelectedRow(row.id);
+    setLogs(null);
+    try {
+      const response = await axios.post("https://api.safepay.kg/admin/payment/payments/logs", { id: row.id });
+      setLogs(response.data);
+    } catch (error) {
+      console.error("Ошибка при получении логов:", error);
+      setLogs("Ошибка при загрузке логов");
+    }
+  };
+
   const columns = [
-    { name: "Тестовый", selector: row => getIsTestLabel(row.is_test), sortable: true },
-    { name: "ID", selector: row => row.id, sortable: true },
-    { name: "Мерчант", selector: row => row.merchant_id, sortable: true },
-    { name: "Номер заказа", selector: row => row.reference_id, sortable: true },
-    { name: "Тип", selector: row => getTypeLabel(row.type), sortable: true },
-    { name: "Статус", selector: row => getStatusLabel(row.status), sortable: true },
-    { name: "Маска карты", selector: row => row.masked_pan, sortable: true },
-    { name: "Сумма", selector: row => row.amount, sortable: true },
-    { name: "Валюта", selector: row => row.currency, sortable: true },
-    { name: "Назначение", selector: row => row.description, sortable: true },
-    { name: "Коммент", selector: row => row.comment, sortable: true },
-    { name: "Комиссия банка", selector: row => row.bank_commission, sortable: true },
-    { name: "Комиссия мерчанта", selector: row => row.merchant_commission, sortable: true },
-    { name: "Сумма возврата", selector: row => row.refund_amount, sortable: true },
-    { name: "Причина Возврата", selector: row => row.refund_reason, sortable: true },
-    { name: "ID юзера", selector: row => row.user_id, sortable: true },
-    { name: "Телефон", selector: row => row.user_phone, sortable: true },
-    { name: "Email", selector: row => row.user_email, sortable: true },
-    { name: "Время завершения", selector: row => row.finished_at, sortable: true },
-    { name: "Время создания", selector: row => new Date(row.created_at).toLocaleString(), sortable: true },
-    { name: "Эквайер", selector: row => row.acquirer_id, sortable: true },
-    { name: "Эмитент", selector: row => row.bank_id, sortable: true },
-    { name: "Попытки", selector: row => row.try, sortable: true },
-    { name: "IP", selector: row => row.ip, sortable: true },
-    { name: "TR тип", selector: row => getTrTypeLabel(row.tr_type), sortable: true },
-    { name: "URL коллбэка", selector: row => row.back_url, sortable: true },
-    { name: "URL мерчанта", selector: row => row.request_url, sortable: true },
-    { name: "URL фейла", selector: row => row.fail_url, sortable: true },
-    { name: "РРН", selector: row => row.rrn, sortable: true }
+    { name: "Тестовый", selector: row => getIsTestLabel(row.is_test), sortable: true, width: "120px" },
+    { name: "ID", selector: row => row.id, sortable: true, width: "100px" },
+    { name: "Мерчант", selector: row => row.merchant_id, sortable: true, width: "120px" },
+    { name: "Номер заказа", selector: row => row.reference_id, sortable: true, width: "150px" },
+    { name: "Тип", selector: row => getTypeLabel(row.type), sortable: true, width: "150px" },
+    { name: "Статус", selector: row => getStatusLabel(row.status), sortable: true, width: "120px" },
+    { name: "Сумма", selector: row => row.amount, sortable: true, width: "120px" },
+    { name: "Валюта", selector: row => row.currency, sortable: true, width: "100px" }
   ];
 
   const exportToExcel = () => {
@@ -125,7 +118,22 @@ function Payments() {
         pagination
         highlightOnHover
         striped
+        onRowClicked={handleRowClick}
+        pointerOnHover
       />
+      {logs && selectedRow && (
+        <div
+          style={{
+            marginTop: "20px",
+            padding: "10px",
+            border: "1px solid #ccc",
+            borderRadius: "5px",
+            background: "#f9f9f9"
+          }}>
+          <h2>Логи платежа ID: {selectedRow}</h2>
+          <pre>{JSON.stringify(logs, null, 2)}</pre>
+        </div>
+      )}
     </div>
   );
 }
