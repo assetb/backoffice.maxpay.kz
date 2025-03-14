@@ -128,7 +128,7 @@ function Payments() {
 
   const handleRowClick = async (id) => {
     try {
-      const response = await axios.post('https://api.safepay.kz/admin/payment/payments/logs', { id });
+      const response = await axios.post('https://api.safepay.kg/admin/payment/payments/logs', { id });
       setLogs(response.data);
     } catch (error) {
       console.error('Ошибка при получении логов:', error);
@@ -201,7 +201,7 @@ function Payments() {
     };
    
     try {
-      const response = await axios.post('https://api.safepay.kz/admin/payment/get-payments', filters);
+      const response = await axios.post('https://api.safepay.kg/admin/payment/get-payments', filters);
       setData(response.data);
     } catch (error) {
       console.error('Ошибка при получении данных:', error);

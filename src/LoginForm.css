@@ -1,6 +1,5 @@
 
 .login-page {
-  /* background-image: url(https://sotni.ru/wp-content/uploads/2023/08/tsifrovoi-fon-37.webp); */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -18,7 +17,6 @@
   border-radius: 5px;
   background-color: #ffffff; /* Цвет фона контейнера */
   color: #4b1313;
-  margin-top: 0; /* Добавляем это */
 }
 
 
@@ -54,7 +52,7 @@ input[type="password"] {
 }
 
 .login {
-  width: 300px;;
+  width: 300px;
   height: 50px;
   padding: 10px;
   border: none;

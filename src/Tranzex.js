@@ -107,7 +107,7 @@ function Tranzex() {
 
   const handleRowClick = async id => {
     try {
-      const response = await axios.post("https://api.safepay.kz/admin/tranzex/transactions/logs", { id });
+      const response = await axios.post("https://api.safepay.kg/admin/tranzex/transactions/logs", { id });
       setLogs(response.data);
     } catch (error) {
       console.error("Ошибка при получении логов:", error);
@@ -168,7 +168,7 @@ function Tranzex() {
     };
 
     try {
-      const response = await axios.post("https://api.safepay.kz/admin/tranzex/get-transactions", filters);
+      const response = await axios.post("https://api.safepay.kg/admin/tranzex/get-transactions", filters);
       setData(response.data);
     } catch (error) {
       console.error("Ошибка при получении данных:", error);

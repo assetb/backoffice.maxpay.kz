@@ -117,7 +117,7 @@ function P2P() {
 
   const handleRowClick = async (id) => {
     try {
-      const response = await axios.post('https://api.safepay.kz/admin/p2p/transactions/logs', { id });
+      const response = await axios.post('https://api.safepay.kg/admin/p2p/transactions/logs', { id });
       setLogs(response.data);
     } catch (error) {
       console.error('Ошибка при получении логов:', error);
@@ -179,7 +179,7 @@ function P2P() {
 
   
     try {
-      const response = await axios.post('https://api.safepay.kz/admin/p2p/get-transactions', filters);
+      const response = await axios.post('https://api.safepay.kg/admin/p2p/get-transactions', filters);
       setData(response.data);
     } catch (error) {
       console.error('Ошибка при получении данных:', error);

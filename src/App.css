@@ -14,7 +14,6 @@
  /* Стили для страницы авторизации */
 .login-page {
   background-color: #455f86;
-  /* background-image: url(https://sotni.ru/wp-content/uploads/2023/08/tsifrovoi-fon-37.webp);  */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -33,7 +32,6 @@
   border-radius: 12px;
   background-color: #ffffff;
   color: #4b1313;
-  margin-top: 0;
 }
 
 .container .LoginLabel {
@@ -77,17 +75,8 @@ input {
   border: 1px solid #bebebe;
 }
 
-/* input[type="text"],
-input[type="password"] {
-  width: 90%;
-  padding: 10px;
-  border: 1px solid #bebebe;
-  border-radius: 5px;
-  font-size: 16px;
-} */
-
 .login {
-  width: 300px;;
+  width: 300px;
   height: 50px;
   padding: 10px;
   border: none;
@@ -133,12 +122,12 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-  color: #5189c5;; /* Цвет при наведении */
+  color: #5189c5; /* Цвет при наведении */
   transform: translateY(-2px); /* Легкий эффект подъема */
 }
 
 /* Стили для активного элемента меню */
 nav ul li a.active {
-  color: #5189c5;; /* Цвет активного элемента меню */
+  color: #5189c5; /* Цвет активного элемента меню */
   font-weight: 700; /* Более жирный шрифт для активного элемента */
 }
