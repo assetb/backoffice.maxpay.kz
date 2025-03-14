@@ -1,0 +1,74 @@
+
+.login-page {
+  /* background-image: url(https://sotni.ru/wp-content/uploads/2023/08/tsifrovoi-fon-37.webp); */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(76, 120, 170, 0.9); 
+}
+
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+  margin-top: 0; /* Устанавливаем нулевой отступ сверху */
+  padding: 40px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #ffffff; /* Цвет фона контейнера */
+  color: #4b1313;
+  margin-top: 0; /* Добавляем это */
+}
+
+
+.login-page .container {
+  max-width: 300px;
+  margin: 0 auto;
+  margin-top: 0px;
+  padding: 55px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: #464646;
+  font-size: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  color: black;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 90%;
+  padding: 10px;
+  border: 1px solid #bebebe;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.login {
+  width: 300px;;
+  height: 50px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #ffffff;
+  font-size: 16px;
+  cursor:auto;
+
+}
+
+.login:hover {
+  background-color: #0056b3;
+}
+
+  
+

@@ -1,0 +1,208 @@
+.table-containerCash {
+  position: relative;    
+  width: 99%;
+  margin: 5px;
+  overflow-x: auto;
+  overflow-y: auto;
+  border: 1px solid #000000;
+  height: 750px;
+}
+
+.modal {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 90%;
+  border: 1px solid #c0cafc;
+  margin-left: 10px;
+  max-height: 100%;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.modaltable {
+  margin-top: -30px;
+}
+
+.close {
+  width: 70px;
+  height: 25px;
+  border: 1px solid #c0cafc;
+  background-color: #bdd6f1;
+  border-radius: 4px;
+  font-size: 10px;
+  max-height: 100%;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  text-align: center;
+}
+
+.visible {
+  display: flex;
+}
+
+.hidden {
+  display: none;
+}
+
+h1 {
+  font-size: 20px;
+}
+
+.a {
+  font-size: 24px;
+}
+
+.filter-container {
+  position: sticky;
+  display: flex;
+  top: 0;
+  background-color: #ffffff;
+  z-index: 1;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.width {
+  font-size: small;
+  min-width: 50px;
+  max-width: 400px;
+  border-style: groove;
+  padding: 2px; 
+  word-wrap: break-word;
+}
+
+.filters {
+  margin-right: 5px;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 250px;
+  margin-top: 5px;
+  margin-left: 5px;
+  width: auto;
+  height: 10px;
+}
+
+.filters input {
+  flex: content;
+}
+
+.react-datepicker {
+  font-size: 12px;
+}
+
+.react-datepicker__day {
+  width: 2rem;
+  height: 1rem;
+  line-height: 1rem;
+  font-size: 12px;
+}
+
+.react-datepicker__day-names {
+  font-size: 14px;
+}
+
+.custom-table thead {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 1;
+}
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.custom-table th,
+.custom-table td {
+  border: 1px solid #d6dbf4;
+  padding: 8px;
+  text-align: left;
+}
+
+.custom-table th {
+  background-color: #eaf1fd;
+  color: #000000;
+}
+
+.custom-table tr:nth-child(even) {
+  background-color: #ffffff;
+  border: 1px solid #dbe1fb;
+}
+
+.custom-table tr:hover {
+  background-color: #ddd;
+}
+
+.filter-container label,
+.filter-container input {
+  margin: 5px;
+}
+
+.filter-container label {
+  width: 80px;
+}
+
+.filter-container input {
+  width: 120px;
+}
+
+.filterCash {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 170px;
+  height: 40px;
+  font-size: 13px;
+  margin: 10px;
+}
+
+.filterCash:hover {
+  background-color: #0056b3;
+}
+
+.exportCash {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 70px;
+  height: 40px;
+  font-size: 13px;
+  margin: 10px;
+}
+
+.exportCash:hover {
+  background-color: #0056b3;
+}
+
+.paginationCash {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.paginationCash button {
+  background-color: #989898;
+  color: #ffffff;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  width: 20px;
+  height: 30px;
+  font-size: 10px;
+  margin: 0 2px;
+}
+
+.paginationCash span {
+  font-size: 15px;
+  margin: 0 10px;
+  color: #000000;
+}

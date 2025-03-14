@@ -1,0 +1,223 @@
+/* P2P.css*/
+.table-container {
+    position: relative;    
+    width: 99%; /*Устанавливаем ширину окна на 100% экрана минус отступы */
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    overflow-x: auto; /* Добавляем горизонтальную прокрутку при необходимости*/
+    overflow-y: auto;
+    border: 1px solid #000000;
+    height: 750px;
+  }
+
+  .modal {
+    bottom: 0;
+    left: 0;
+    width: 90%;
+    border: 1px solid #c0cafc;
+    margin-left: 10px;
+    max-height: 100%; /* задайте максимальную высоту */
+    overflow-y: auto; /* добавьте полосу прокрутки при необходимости */
+  }
+
+  
+  .modaltable {
+   margin-top: -30px;
+  }
+
+
+  .close {
+    margin-right: -1190px;
+    margin-bottom: -10px;
+    width: 70px;
+    height: 25px;
+    border: 1px solid #c0cafc;
+    background-color: #bdd6f1;
+    border-radius: 4px;
+    font-size: 10px;
+    max-height: 100%; /* задайте максимальную высоту */
+    overflow: hidden;
+    align-items: center; /* Центрируем по вертикали */
+    justify-content: center; /* Центрируем по горизонтали */
+    padding: 0; /* Убираем отступы */
+    text-align: center; /* Центрируем текст */
+  }
+
+  .visible {
+    display: flex;
+  }
+  
+  .hidden {
+    display: none;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  .a {
+    font-size: 24px;
+  }
+
+  .filter-container {
+    position: sticky;
+    display: flex;
+    top: 0;
+    background-color: #ffffff; /* Цвет фона, который соответствует фону таблицы */
+    z-index: 1; /* Чтобы фильтры были поверх таблицы */
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
+  
+
+  .width {
+    font-size:small;
+    min-width: 50px; /* Минимальная ширина столбца */
+    max-width: 400px; /* Максимальная ширина столбца, если нужно */
+    border-style:groove;
+    padding: 2px; 
+    word-wrap: break-word;
+  }
+
+  .filters {
+    margin-right: 5px;
+    display: flex;
+    gap: 10px;
+    margin-bottom: 250px;
+    margin-top: 5px;
+    margin-left: 5px;
+    width: auto;
+    height: 10px;
+    
+  }
+
+  .filters input {
+    flex:content;
+  }
+  
+  .react-datepicker {
+    font-size: 12px; /* Установите желаемый размер шрифта */
+    
+  }
+  .react-datepicker__day {
+    width: 2rem; /* Установите желаемую ширину ячейки дня */
+    height: 1rem; /* Установите желаемую высоту ячейки дня */
+    line-height: 1rem; /* Установите желаемую высоту строки дня */
+    font-size: 12px; /* Установите желаемый размер шрифта для дня */
+  }
+  .react-datepicker__day-names {
+    font-size: 14px; /* Установите желаемый размер шрифта для дней недели */
+  }
+  
+
+  .custom-table thead {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 1;
+  }
+
+   
+  .custom-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .custom-table th,
+  .custom-table td {
+    border: 1px solid #d6dbf4; /* границы ячеек */
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .custom-table th {
+    background-color: #eaf1fd;
+    color: #000000;
+  }
+  
+  .custom-table tr:nth-child(even) {
+    background-color: #ffffff;
+    border: 1px solid #dbe1fb;
+  }
+  
+  .custom-table tr:hover {
+    background-color: #ddd;
+  }
+
+  .filter-container label,
+  .filter-container input {
+    margin: 5px;
+  }
+  
+  .filter-container label {
+    width: 80px; /* Уменьшаем ширину метки */
+  }
+  
+  .filter-container input {
+    width: 120px; /* Уменьшаем ширину поля ввода */
+  }
+  
+  .filter {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 145px;
+    width: 170px;
+    height: 40px;
+    font-size: 13px;
+    margin-left: -320px;
+    margin-right: 5px;
+  }
+  
+  .filter:hover {
+    background-color: #0056b3;
+  }
+
+  .export {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 145px;
+    width: 70px;
+    height: 40px;
+    font-size: 13px;
+    margin-left: -90px;
+    margin-right: 5px;
+  }
+
+  .export:hover {
+    background-color: #0056b3;
+  }
+
+  .paginationp2p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 230px; /* измените по необходимости */
+    margin-left: -125px;
+  }
+  
+  .paginationp2p button {
+    background-color: #989898;
+    color: #ffffff;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    width: 20px; /* измените по необходимости */
+    height: 30px; /* измените по необходимости */
+    font-size: 10px;
+    margin: 0 1px; /* отступы между кнопками */
+  }
+  
+  .paginationp2p span {
+    font-size: 15px;
+    margin: 0 10px; /* отступы по бокам от текста */
+    color: #000000; /* измените цвет текста по необходимости */
+  }

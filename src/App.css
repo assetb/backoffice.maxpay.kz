@@ -1,0 +1,144 @@
+/*App css*/
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+ /* Стили для страницы авторизации */
+.login-page {
+  background-color: #455f86;
+  /* background-image: url(https://sotni.ru/wp-content/uploads/2023/08/tsifrovoi-fon-37.webp);  */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: rgb(255, 255, 255);
+}
+
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+  margin-top: 0; 
+  padding: 40px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  background-color: #ffffff;
+  color: #4b1313;
+  margin-top: 0;
+}
+
+.container .LoginLabel {
+  margin: 0;
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+}
+
+.login-page .container {
+  max-width: 300px;
+  margin: 0 auto;
+  margin-top: 0px;
+  padding: 55px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  background-color: #ffffff;
+  color: #464646;
+  font-size: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  color: black;
+}
+
+form div {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 1.2em;
+}
+
+input {
+  width: 90%;
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid #bebebe;
+}
+
+/* input[type="text"],
+input[type="password"] {
+  width: 90%;
+  padding: 10px;
+  border: 1px solid #bebebe;
+  border-radius: 5px;
+  font-size: 16px;
+} */
+
+.login {
+  width: 300px;;
+  height: 50px;
+  padding: 10px;
+  border: none;
+  border-radius: 12px;
+  background-color: #496583;
+  color: #ffffff;
+  font-size: 16px;
+  cursor:auto;
+  margin-top: 25px;
+} 
+
+.login:hover {
+  background-color: #2e3e50;
+}
+
+
+/* Стили для меню */
+/* Основные стили для меню */
+nav {
+  background-color: #ffffff; /* Светлый фон для навигации */
+  padding: 20px 0px; /* Отступы вокруг меню */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тень только снизу */
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex; /* Выравнивание элементов в строку */
+  justify-content: center; /* Центрирование элементов по горизонтали */
+}
+
+nav ul li {
+  margin: 0 15px; /* Отступы между элементами */
+}
+
+nav ul li a {
+  color: #333; /* Темно-серый цвет текста */
+  text-decoration: none;
+  font-size: 20px; /* Немного уменьшенный размер шрифта */
+  font-weight: 500; /* Полужирное начертание шрифта */
+  transition: color 0.3s, transform 0.3s; /* Плавные переходы для цвета и трансформации */
+}
+
+nav ul li a:hover {
+  color: #5189c5;; /* Цвет при наведении */
+  transform: translateY(-2px); /* Легкий эффект подъема */
+}
+
+/* Стили для активного элемента меню */
+nav ul li a.active {
+  color: #5189c5;; /* Цвет активного элемента меню */
+  font-weight: 700; /* Более жирный шрифт для активного элемента */
+}
