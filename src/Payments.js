@@ -87,40 +87,82 @@ function Payments() {
   };
 
   const columns = [
-    { name: "Тестовый", selector: row => getIsTestLabel(row.is_test), sortable: true, width: "120px" },
-    { name: "ID", selector: row => row.id, sortable: true, width: "100px" },
-    { name: "Мерчант", selector: row => row.merchant_id, sortable: true, width: "120px" },
-    { name: "Номер заказа", selector: row => row.reference_id, sortable: true, width: "150px" },
-    { name: "Тип", selector: row => getTypeLabel(row.type), sortable: true, width: "150px" },
-    { name: "Статус", selector: row => getStatusLabel(row.status), sortable: true, width: "120px" },
-    { name: "Маска карты", selector: row => row.masked_pan, sortable: true },
-    { name: "Сумма", selector: row => row.amount, sortable: true, width: "120px" },
-    { name: "Валюта", selector: row => row.currency, sortable: true, width: "100px" },
-    { name: "Назначение", selector: row => row.description, sortable: true, width: "150px" },
-    { name: "Коммент", selector: row => row.comment, sortable: true, width: "150px" },
-    { name: "Комиссия банка", selector: row => row.bank_commission, sortable: true, width: "120px" },
-    { name: "Комиссия мерчанта", selector: row => row.merchant_commission, sortable: true, width: "120px" },
-    { name: "Сумма возврата", selector: row => row.refund_amount, sortable: true, width: "120px" },
-    { name: "Причина Возврата", selector: row => row.refund_reason, sortable: true, width: "150px" },
-    { name: "ID юзера", selector: row => row.user_id, sortable: true, width: "120px" },
-    { name: "Телефон", selector: row => row.user_phone, sortable: true, width: "150px" },
-    { name: "Email", selector: row => row.user_email, sortable: true, width: "150px" },
-    { name: "Время завершения", selector: row => row.finished_at, sortable: true, width: "150px" },
+    {
+      name: "Тестовый",
+      selector: row => getIsTestLabel(row.is_test),
+      sortable: true,
+      width: "120px",
+      cell: row => <span title={getIsTestLabel(row.is_test)}>{getIsTestLabel(row.is_test)}</span>
+    },
+    {
+      name: "ID",
+      selector: row => row.id,
+      sortable: true,
+      width: "100px",
+      cell: row => <span title={row.id}>{row.id}</span>
+    },
+    {
+      name: "Мерчант",
+      selector: row => row.merchant_id,
+      sortable: true,
+      width: "120px",
+      cell: row => <span title={row.merchant_id}>{row.merchant_id}</span>
+    },
+    {
+      name: "Номер заказа",
+      selector: row => row.reference_id,
+      sortable: true,
+      width: "150px",
+      cell: row => <span title={row.reference_id}>{row.reference_id}</span>
+    },
+    {
+      name: "Тип",
+      selector: row => getTypeLabel(row.type),
+      sortable: true,
+      width: "150px",
+      cell: row => <span title={getTypeLabel(row.type)}>{getTypeLabel(row.type)}</span>
+    },
+    {
+      name: "Статус",
+      selector: row => getStatusLabel(row.status),
+      sortable: true,
+      width: "120px",
+      cell: row => <span title={getStatusLabel(row.status)}>{getStatusLabel(row.status)}</span>
+    },
+    { name: "Маска карты", selector: row => row.masked_pan, sortable: true, width: "150px", cell: row => <span title={row.masked_pan}>{row.masked_pan}</span> },
+    {
+      name: "Сумма",
+      selector: row => row.amount,
+      sortable: true,
+      width: "120px",
+      cell: row => <span title={row.amount}>{row.amount}</span>
+    },
+    { name: "Валюта", selector: row => row.currency, sortable: true, width: "100px", cell: row => <span title={row.currency}>{row.currency}</span> },
+    { name: "Назначение", selector: row => row.description, sortable: true, width: "150px", cell: row => <span title={row.description}>{row.description}</span> },
+    { name: "Коммент", selector: row => row.comment, sortable: true, width: "150px", cell: row => <span title={row.}>{row.}</span> },
+    { name: "Комиссия банка", selector: row => row.bank_commission, sortable: true, width: "120px", cell: row => <span title={row.}>{row.}</span> },
+    { name: "Комиссия мерчанта", selector: row => row.merchant_commission, sortable: true, width: "120px", cell: row => <span title={row.}>{row.}</span> },
+    { name: "Сумма возврата", selector: row => row.refund_amount, sortable: true, width: "120px", cell: row => <span title={row.}>{row.}</span> },
+    { name: "Причина Возврата", selector: row => row.refund_reason, sortable: true, width: "150px", cell: row => <span title={row.}>{row.}</span> },
+    { name: "ID юзера", selector: row => row.user_id, sortable: true, width: "120px", cell: row => <span title={row.}>{row.}</span> },
+    { name: "Телефон", selector: row => row.user_phone, sortable: true, width: "150px", cell: row => <span title={row.}>{row.}</span> },
+    { name: "Email", selector: row => row.user_email, sortable: true, width: "150px", cell: row => <span title={row.}>{row.}</span> },
+    { name: "Время завершения", selector: row => row.finished_at, sortable: true, width: "150px", cell: row => <span title={row.}>{row.}</span> },
     {
       name: "Время создания",
       selector: row => new Date(row.created_at).toLocaleString(),
       sortable: true,
-      width: "150px"
+      width: "150px", cell: row => <span title={row.}>{row.}</span>
     },
-    { name: "Эквайер", selector: row => row.acquirer_id, sortable: true, width: "120px" },
-    { name: "Эмитент", selector: row => row.bank_id, sortable: true, width: "120px" },
-    { name: "Попытки", selector: row => row.try, sortable: true, width: "100px" },
-    { name: "IP", selector: row => row.ip, sortable: true, width: "150px" },
-    { name: "TR тип", selector: row => getTrTypeLabel(row.tr_type), sortable: true, width: "150px" },
-    { name: "URL коллбэка", selector: row => row.back_url, sortable: true, width: "200px" },
-    { name: "URL мерчанта", selector: row => row.request_url, sortable: true, width: "200px" },
-    { name: "URL фейла", selector: row => row.fail_url, sortable: true, width: "200px" },
-    { name: "РРН", selector: row => row.rrn, sortable: true, width: "150px" }
+    { name: "Эквайер", selector: row => row.acquirer_id, sortable: true, width: "120px", cell: row => <span title={row.acquirer_id}>{row.acquirer_id}</span> },
+    { name: "Эмитент", selector: row => row.bank_id, sortable: true, width: "120px", cell: row => <span title={row.bank_id}>{row.bank_id}</span> },
+    { name: "Попытки", selector: row => row.try, sortable: true, width: "100px", cell: row => <span title={row.try}>{row.try}</span> },
+    { name: "IP", selector: row => row.ip, sortable: true, width: "150px", cell: row => <span title={row.ip}>{row.ip}</span> },
+    { name: "TR тип", selector: row => getTrTypeLabel(row.tr_type), sortable: true, width: "150px", cell: row => <span title={getTrTypeLabel(row.tr_type)}>{getTrTypeLabel(row.tr_type)}</span> },
+    { name: "URL коллбэка", selector: row => row.back_url, sortable: true, width: "200px", cell: row => <span title={row.back_url}>{row.back_url}</span> },
+    { name: "URL мерчанта", selector: row => row.request_url, sortable: true, width: "200px", cell: row => <span title={row.request_url}>{row.request_url}</span> },
+    { name: "URL фейла", selector: row => row.fail_url, sortable: true, width: "200px", cell: row => <span title={row.fail_url}>{row.fail_url}</span> },
+    { name: "РРН", selector: row => row.rrn, sortable: true, width: "150px", cell: row => <span title={row.rrn}>{row.rrn}</span> }
   ];
 
   const exportToExcel = () => {
