@@ -69,13 +69,39 @@ function Payments() {
     }
   };
 
+  const getIsTestLabel = isTest => (isTest ? "Да" : "Нет");
+  const getTrTypeLabel = trType => (trType === 1 ? "Двустадийный" : "");
+
   const columns = [
+    { name: "Тестовый", selector: row => getIsTestLabel(row.is_test), sortable: true },
     { name: "ID", selector: row => row.id, sortable: true },
-    { name: "Type", selector: row => getTypeLabel(row.type), sortable: true },
-    { name: "Status", selector: row => getStatusLabel(row.status), sortable: true },
-    { name: "Amount", selector: row => row.amount, sortable: true },
-    { name: "Created At", selector: row => new Date(row.created_at).toLocaleString(), sortable: true },
-    { name: "Updated At", selector: row => new Date(row.updated_at).toLocaleString(), sortable: true }
+    { name: "Мерчант", selector: row => row.merchant_id, sortable: true },
+    { name: "Номер заказа", selector: row => row.reference_id, sortable: true },
+    { name: "Тип", selector: row => getTypeLabel(row.type), sortable: true },
+    { name: "Статус", selector: row => getStatusLabel(row.status), sortable: true },
+    { name: "Маска карты", selector: row => row.masked_pan, sortable: true },
+    { name: "Сумма", selector: row => row.amount, sortable: true },
+    { name: "Валюта", selector: row => row.currency, sortable: true },
+    { name: "Назначение", selector: row => row.description, sortable: true },
+    { name: "Коммент", selector: row => row.comment, sortable: true },
+    { name: "Комиссия банка", selector: row => row.bank_commission, sortable: true },
+    { name: "Комиссия мерчанта", selector: row => row.merchant_commission, sortable: true },
+    { name: "Сумма возврата", selector: row => row.refund_amount, sortable: true },
+    { name: "Причина Возврата", selector: row => row.refund_reason, sortable: true },
+    { name: "ID юзера", selector: row => row.user_id, sortable: true },
+    { name: "Телефон", selector: row => row.user_phone, sortable: true },
+    { name: "Email", selector: row => row.user_email, sortable: true },
+    { name: "Время завершения", selector: row => row.finished_at, sortable: true },
+    { name: "Время создания", selector: row => new Date(row.created_at).toLocaleString(), sortable: true },
+    { name: "Эквайер", selector: row => row.acquirer_id, sortable: true },
+    { name: "Эмитент", selector: row => row.bank_id, sortable: true },
+    { name: "Попытки", selector: row => row.try, sortable: true },
+    { name: "IP", selector: row => row.ip, sortable: true },
+    { name: "TR тип", selector: row => getTrTypeLabel(row.tr_type), sortable: true },
+    { name: "URL коллбэка", selector: row => row.back_url, sortable: true },
+    { name: "URL мерчанта", selector: row => row.request_url, sortable: true },
+    { name: "URL фейла", selector: row => row.fail_url, sortable: true },
+    { name: "РРН", selector: row => row.rrn, sortable: true }
   ];
 
   const exportToExcel = () => {
