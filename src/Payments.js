@@ -103,10 +103,14 @@ function Payments() {
     },
     {
       name: "Мерчант",
-      selector: row => row.merchant_id,
+      selector: row => row.merchant,
       sortable: true,
       width: "120px",
-      cell: row => <span title={row.merchant_id}>{row.merchant_id}</span>
+      cell: row => (
+        <span title={row.merchant} style={{ whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+          {row.merchant}
+        </span>
+      )
     },
     {
       name: "Номер заказа",
@@ -134,7 +138,11 @@ function Payments() {
       selector: row => row.masked_pan,
       sortable: true,
       width: "150px",
-      cell: row => <span title={row.masked_pan}>{row.masked_pan}</span>
+      cell: row => (
+        <span title={row.masked_pan} style={{ whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+          {row.masked_pan}
+        </span>
+      )
     },
     {
       name: "Сумма",
@@ -267,21 +275,33 @@ function Payments() {
       selector: row => row.back_url,
       sortable: true,
       width: "200px",
-      cell: row => <span title={row.back_url}>{row.back_url}</span>
+      cell: row => (
+        <span title={row.back_url} style={{ whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+          {row.back_url}
+        </span>
+      )
     },
     {
       name: "URL мерчанта",
       selector: row => row.request_url,
       sortable: true,
       width: "200px",
-      cell: row => <span title={row.request_url}>{row.request_url}</span>
+      cell: row => (
+        <span title={row.request_url} style={{ whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+          {row.request_url}
+        </span>
+      )
     },
     {
       name: "URL фейла",
       selector: row => row.fail_url,
       sortable: true,
       width: "200px",
-      cell: row => <span title={row.fail_url}>{row.fail_url}</span>
+      cell: row => (
+        <span title={row.fail_url} style={{ whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+          {row.fail_url}
+        </span>
+      )
     },
     {
       name: "РРН",
@@ -306,7 +326,7 @@ function Payments() {
         📥 Экспорт в Excel
       </button>
       <DataTable
-        title="Таблица платежей"
+        title=""
         columns={columns}
         data={data}
         progressPending={loading}
