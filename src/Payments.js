@@ -93,13 +93,20 @@ function Payments() {
   };
 
   const columns = [
-    // {
-    //   name: "Тестовый",
-    //   selector: row => getIsTestLabel(row.is_test),
-    //   sortable: true,
-    //   width: "120px",
-    //   cell: row => <span title={getIsTestLabel(row.is_test)}>{getIsTestLabel(row.is_test)}</span>
-    // },
+    {
+      name: "Время создания",
+      selector: (row) => new Date(row.created_at).toLocaleString(),
+      sortable: true,
+      width: "150px",
+      cell: (row) => <span title={row.created_at}>{row.created_at}</span>,
+    },
+    {
+      name: "Время завершения",
+      selector: (row) => row.finished_at,
+      sortable: true,
+      width: "150px",
+      cell: (row) => <span title={row.finished_at}>{row.finished_at}</span>,
+    },
     {
       name: "ID",
       selector: (row) => row.id,
@@ -185,13 +192,6 @@ function Payments() {
       cell: (row) => <span title={row.currency}>{row.currency}</span>,
     },
     {
-      name: "Назначение",
-      selector: (row) => row.description,
-      sortable: true,
-      width: "150px",
-      cell: (row) => <span title={row.description}>{row.description}</span>,
-    },
-    {
       name: "Коммент",
       selector: (row) => row.comment,
       sortable: true,
@@ -250,20 +250,6 @@ function Payments() {
       sortable: true,
       width: "150px",
       cell: (row) => <span title={row.user_email}>{row.user_email}</span>,
-    },
-    {
-      name: "Время завершения",
-      selector: (row) => row.finished_at,
-      sortable: true,
-      width: "150px",
-      cell: (row) => <span title={row.finished_at}>{row.finished_at}</span>,
-    },
-    {
-      name: "Время создания",
-      selector: (row) => new Date(row.created_at).toLocaleString(),
-      sortable: true,
-      width: "150px",
-      cell: (row) => <span title={row.created_at}>{row.created_at}</span>,
     },
     {
       name: "Эквайер",
