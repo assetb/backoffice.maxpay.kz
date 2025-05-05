@@ -12,7 +12,10 @@ function Payments() {
   const fetchData = async () => {
     setLoading(true);
     try {
-      const response = await axios.post("https://api.safepay.kg/admin/payment/get-payments", {});
+      const response = await axios.post(
+        "https://api.safepay.kg/admin/payment/get-payments",
+        {}
+      );
       setData(response.data);
     } catch (error) {
       console.error("Ошибка при получении данных:", error);
@@ -25,7 +28,7 @@ function Payments() {
     fetchData();
   }, []);
 
-  const getTypeLabel = type => {
+  const getTypeLabel = (type) => {
     switch (type) {
       case 0:
         return "Прием";
@@ -56,7 +59,7 @@ function Payments() {
     }
   };
 
-  const getStatusLabel = status => {
+  const getStatusLabel = (status) => {
     switch (status) {
       case 0:
         return "Новый";
@@ -71,14 +74,17 @@ function Payments() {
     }
   };
 
-  const getIsTestLabel = isTest => (isTest ? "Да" : "Нет");
-  const getTrTypeLabel = trType => (trType === 1 ? "Двустадийный" : "");
+  const getIsTestLabel = (isTest) => (isTest ? "Да" : "Нет");
+  const getTrTypeLabel = (trType) => (trType === 1 ? "Двустадийный" : "");
 
-  const handleRowClick = async row => {
+  const handleRowClick = async (row) => {
     setSelectedRow(row.id);
     setLogs(null);
     try {
-      const response = await axios.post("https://api.safepay.kg/admin/payment/payments/logs", { id: row.id });
+      const response = await axios.post(
+        "https://api.safepay.kg/admin/payment/payments/logs",
+        { id: row.id }
+      );
       setLogs(response.data);
     } catch (error) {
       console.error("Ошибка при получении логов:", error);
@@ -87,229 +93,278 @@ function Payments() {
   };
 
   const columns = [
-    {
-      name: "Тестовый",
-      selector: row => getIsTestLabel(row.is_test),
-      sortable: true,
-      width: "120px",
-      cell: row => <span title={getIsTestLabel(row.is_test)}>{getIsTestLabel(row.is_test)}</span>
-    },
+    // {
+    //   name: "Тестовый",
+    //   selector: row => getIsTestLabel(row.is_test),
+    //   sortable: true,
+    //   width: "120px",
+    //   cell: row => <span title={getIsTestLabel(row.is_test)}>{getIsTestLabel(row.is_test)}</span>
+    // },
     {
       name: "ID",
-      selector: row => row.id,
+      selector: (row) => row.id,
       sortable: true,
       width: "100px",
-      cell: row => <span title={row.id}>{row.id}</span>
+      cell: (row) => <span title={row.id}>{row.id}</span>,
     },
     {
       name: "Мерчант",
-      selector: row => row.merchant,
+      selector: (row) => row.merchant,
       sortable: true,
       width: "120px",
-      cell: row => (
-        <span title={row.merchant} style={{ whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+      cell: (row) => (
+        <span
+          title={row.merchant}
+          style={{
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+          }}
+        >
           {row.merchant}
         </span>
-      )
+      ),
     },
     {
       name: "Номер заказа",
-      selector: row => row.reference_id,
+      selector: (row) => row.reference_id,
       sortable: true,
       width: "150px",
-      cell: row => <span title={row.reference_id}>{row.reference_id}</span>
+      cell: (row) => <span title={row.reference_id}>{row.reference_id}</span>,
     },
     {
       name: "Тип",
-      selector: row => getTypeLabel(row.type),
+      selector: (row) => getTypeLabel(row.type),
       sortable: true,
       width: "150px",
-      cell: row => <span title={getTypeLabel(row.type)}>{getTypeLabel(row.type)}</span>
+      cell: (row) => (
+        <span title={getTypeLabel(row.type)}>{getTypeLabel(row.type)}</span>
+      ),
     },
     {
       name: "Статус",
-      selector: row => getStatusLabel(row.status),
+      selector: (row) => getStatusLabel(row.status),
       sortable: true,
       width: "120px",
-      cell: row => <span title={getStatusLabel(row.status)}>{getStatusLabel(row.status)}</span>
+      cell: (row) => (
+        <span title={getStatusLabel(row.status)}>
+          {getStatusLabel(row.status)}
+        </span>
+      ),
     },
     {
       name: "Маска карты",
-      selector: row => row.masked_pan,
+      selector: (row) => row.masked_pan,
       sortable: true,
       width: "150px",
-      cell: row => (
-        <span title={row.masked_pan} style={{ whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+      cell: (row) => (
+        <span
+          title={row.masked_pan}
+          style={{
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+          }}
+        >
           {row.masked_pan}
         </span>
-      )
+      ),
     },
     {
       name: "Сумма",
-      selector: row => row.amount,
+      selector: (row) => row.amount,
       sortable: true,
       width: "120px",
-      cell: row => <span title={row.amount}>{row.amount}</span>
+      cell: (row) => <span title={row.amount}>{row.amount}</span>,
     },
     {
       name: "Валюта",
-      selector: row => row.currency,
+      selector: (row) => row.currency,
       sortable: true,
       width: "100px",
-      cell: row => <span title={row.currency}>{row.currency}</span>
+      cell: (row) => <span title={row.currency}>{row.currency}</span>,
     },
     {
       name: "Назначение",
-      selector: row => row.description,
+      selector: (row) => row.description,
       sortable: true,
       width: "150px",
-      cell: row => <span title={row.description}>{row.description}</span>
+      cell: (row) => <span title={row.description}>{row.description}</span>,
     },
     {
       name: "Коммент",
-      selector: row => row.comment,
+      selector: (row) => row.comment,
       sortable: true,
       width: "150px",
-      cell: row => <span title={row.comment}>{row.comment}</span>
+      cell: (row) => <span title={row.comment}>{row.comment}</span>,
     },
     {
       name: "Комиссия банка",
-      selector: row => row.bank_commission,
+      selector: (row) => row.bank_commission,
       sortable: true,
       width: "120px",
-      cell: row => <span title={row.bank_commission}>{row.bank_commission}</span>
+      cell: (row) => (
+        <span title={row.bank_commission}>{row.bank_commission}</span>
+      ),
     },
     {
       name: "Комиссия мерчанта",
-      selector: row => row.merchant_commission,
+      selector: (row) => row.merchant_commission,
       sortable: true,
       width: "120px",
-      cell: row => <span title={row.merchant_commission}>{row.merchant_commission}</span>
+      cell: (row) => (
+        <span title={row.merchant_commission}>{row.merchant_commission}</span>
+      ),
     },
     {
       name: "Сумма возврата",
-      selector: row => row.refund_amount,
+      selector: (row) => row.refund_amount,
       sortable: true,
       width: "120px",
-      cell: row => <span title={row.refund_amount}>{row.refund_amount}</span>
+      cell: (row) => <span title={row.refund_amount}>{row.refund_amount}</span>,
     },
     {
       name: "Причина Возврата",
-      selector: row => row.refund_reason,
+      selector: (row) => row.refund_reason,
       sortable: true,
       width: "150px",
-      cell: row => <span title={row.refund_reason}>{row.refund_reason}</span>
+      cell: (row) => <span title={row.refund_reason}>{row.refund_reason}</span>,
     },
     {
       name: "ID юзера",
-      selector: row => row.user_id,
+      selector: (row) => row.user_id,
       sortable: true,
       width: "120px",
-      cell: row => <span title={row.user_id}>{row.user_id}</span>
+      cell: (row) => <span title={row.user_id}>{row.user_id}</span>,
     },
     {
       name: "Телефон",
-      selector: row => row.user_phone,
+      selector: (row) => row.user_phone,
       sortable: true,
       width: "150px",
-      cell: row => <span title={row.user_phone}>{row.user_phone}</span>
+      cell: (row) => <span title={row.user_phone}>{row.user_phone}</span>,
     },
     {
       name: "Email",
-      selector: row => row.user_email,
+      selector: (row) => row.user_email,
       sortable: true,
       width: "150px",
-      cell: row => <span title={row.user_email}>{row.user_email}</span>
+      cell: (row) => <span title={row.user_email}>{row.user_email}</span>,
     },
     {
       name: "Время завершения",
-      selector: row => row.finished_at,
+      selector: (row) => row.finished_at,
       sortable: true,
       width: "150px",
-      cell: row => <span title={row.finished_at}>{row.finished_at}</span>
+      cell: (row) => <span title={row.finished_at}>{row.finished_at}</span>,
     },
     {
       name: "Время создания",
-      selector: row => new Date(row.created_at).toLocaleString(),
+      selector: (row) => new Date(row.created_at).toLocaleString(),
       sortable: true,
       width: "150px",
-      cell: row => <span title={row.created_at}>{row.created_at}</span>
+      cell: (row) => <span title={row.created_at}>{row.created_at}</span>,
     },
     {
       name: "Эквайер",
-      selector: row => row.acquirer_id,
+      selector: (row) => row.acquirer_id,
       sortable: true,
       width: "120px",
-      cell: row => <span title={row.acquirer_id}>{row.acquirer_id}</span>
+      cell: (row) => <span title={row.acquirer_id}>{row.acquirer_id}</span>,
     },
     {
       name: "Эмитент",
-      selector: row => row.bank_id,
+      selector: (row) => row.bank_id,
       sortable: true,
       width: "120px",
-      cell: row => <span title={row.bank_id}>{row.bank_id}</span>
+      cell: (row) => <span title={row.bank_id}>{row.bank_id}</span>,
     },
     {
       name: "Попытки",
-      selector: row => row.try,
+      selector: (row) => row.try,
       sortable: true,
       width: "100px",
-      cell: row => <span title={row.try}>{row.try}</span>
+      cell: (row) => <span title={row.try}>{row.try}</span>,
     },
     {
       name: "IP",
-      selector: row => row.ip,
+      selector: (row) => row.ip,
       sortable: true,
       width: "150px",
-      cell: row => <span title={row.ip}>{row.ip}</span>
+      cell: (row) => <span title={row.ip}>{row.ip}</span>,
     },
     {
       name: "TR тип",
-      selector: row => getTrTypeLabel(row.tr_type),
+      selector: (row) => getTrTypeLabel(row.tr_type),
       sortable: true,
       width: "150px",
-      cell: row => <span title={getTrTypeLabel(row.tr_type)}>{getTrTypeLabel(row.tr_type)}</span>
+      cell: (row) => (
+        <span title={getTrTypeLabel(row.tr_type)}>
+          {getTrTypeLabel(row.tr_type)}
+        </span>
+      ),
     },
     {
       name: "URL коллбэка",
-      selector: row => row.back_url,
+      selector: (row) => row.back_url,
       sortable: true,
       width: "200px",
-      cell: row => (
-        <span title={row.back_url} style={{ whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+      cell: (row) => (
+        <span
+          title={row.back_url}
+          style={{
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+          }}
+        >
           {row.back_url}
         </span>
-      )
+      ),
     },
     {
       name: "URL мерчанта",
-      selector: row => row.request_url,
+      selector: (row) => row.request_url,
       sortable: true,
       width: "200px",
-      cell: row => (
-        <span title={row.request_url} style={{ whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+      cell: (row) => (
+        <span
+          title={row.request_url}
+          style={{
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+          }}
+        >
           {row.request_url}
         </span>
-      )
+      ),
     },
     {
       name: "URL фейла",
-      selector: row => row.fail_url,
+      selector: (row) => row.fail_url,
       sortable: true,
       width: "200px",
-      cell: row => (
-        <span title={row.fail_url} style={{ whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+      cell: (row) => (
+        <span
+          title={row.fail_url}
+          style={{
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+          }}
+        >
           {row.fail_url}
         </span>
-      )
+      ),
     },
     {
       name: "РРН",
-      selector: row => row.rrn,
+      selector: (row) => row.rrn,
       sortable: true,
       width: "150px",
-      cell: row => <span title={row.rrn}>{row.rrn}</span>
-    }
+      cell: (row) => <span title={row.rrn}>{row.rrn}</span>,
+    },
   ];
 
   const exportToExcel = () => {
@@ -322,7 +377,10 @@ function Payments() {
   return (
     <div>
       <h1>Данные платежей</h1>
-      <button onClick={exportToExcel} style={{ marginBottom: "10px", padding: "8px", cursor: "pointer" }}>
+      <button
+        onClick={exportToExcel}
+        style={{ marginBottom: "10px", padding: "8px", cursor: "pointer" }}
+      >
         📥 Экспорт в Excel
       </button>
       <DataTable
@@ -343,8 +401,9 @@ function Payments() {
             padding: "10px",
             border: "1px solid #ccc",
             borderRadius: "5px",
-            background: "#f9f9f9"
-          }}>
+            background: "#f9f9f9",
+          }}
+        >
           <h2>Логи платежа ID: {selectedRow}</h2>
           <pre>{JSON.stringify(logs, null, 2)}</pre>
         </div>
