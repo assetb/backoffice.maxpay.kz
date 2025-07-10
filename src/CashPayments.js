@@ -4,6 +4,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./styles.css";
 import * as XLSX from "xlsx";
+import config from "./config";
 
 const exportToExcel = data => {
   const worksheet = XLSX.utils.json_to_sheet(data); // Преобразуем массив данных в формат для Excel
@@ -103,7 +104,7 @@ function CashPayments() {
 
   const handleRowClick = async id => {
     try {
-      const response = await axios.post("https://api.safepay.kg/admin/cash-payment/cash-payments/logs", { id });
+      const response = await axios.post(config.getApiUrl("/admin/cash-payment/cash-payments/logs"), { id });
       setLogs(response.data);
     } catch (error) {
       console.error("Ошибка при получении логов:", error);
@@ -160,7 +161,7 @@ function CashPayments() {
     };
 
     try {
-      const response = await axios.post("https://api.safepaypay.kg/admin/cash-payment/get-cash-payments", filters);
+      const response = await axios.post(config.getApiUrl("/admin/cash-payment/get-cash-payments"), filters);
       setData(response.data);
     } catch (error) {
       console.error("Ошибка при получении данных:", error);

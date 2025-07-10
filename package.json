@@ -1,5 +1,5 @@
 {
-  "name": "backoffice.safepay.kg",
+  "name": "backoffice.undefined",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -7,7 +7,6 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.6.7",
-    "backoffice.safepay.kg": "file:",
     "express": "^4.18.2",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.1",
@@ -20,7 +19,8 @@
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4",
     "xlsx": "^0.18.5",
-    "xlsx-style": "^0.8.13"
+    "xlsx-style": "^0.8.13",
+    "backoffice.undefined": "file:"
   },
   "scripts": {
     "start": "SET PORT=3430 && react-scripts start",

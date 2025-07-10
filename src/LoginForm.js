@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import config from "./config";
 import "./styles.css"; // Импорт файла стилей
 
 function LoginForm({ onLogin }) {
@@ -18,7 +19,7 @@ function LoginForm({ onLogin }) {
     // Разрешенные пользователи (локальная проверка)
     const validUsers = {
       p2pBackOfficeUser: "2Jz-uZA-s8i-jRQ!",
-      manager: "safepay_uZA-s8i"
+      manager: config.MANAGER_ID
     };
 
     if (validUsers[username] && validUsers[username] === password) {
@@ -28,7 +29,7 @@ function LoginForm({ onLogin }) {
 
     // Попытка авторизации через API
     try {
-      const response = await axios.post("https://api.safepay.kg/admin/api/login", {
+      const response = await axios.post(config.getApiUrl("/admin/api/login"), {
         email: username,
         password: password
       });

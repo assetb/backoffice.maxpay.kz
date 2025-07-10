@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import DataTable from "react-data-table-component";
 import * as XLSX from "xlsx";
+import config from "./config";
 
 function Payments() {
   const [data, setData] = useState([]);
@@ -13,7 +14,7 @@ function Payments() {
     setLoading(true);
     try {
       const response = await axios.post(
-        "https://api.safepay.kg/admin/payment/get-payments",
+        config.getApiUrl("/admin/payment/get-payments"),
         {}
       );
       setData(response.data);
@@ -82,7 +83,7 @@ function Payments() {
     setLogs(null);
     try {
       const response = await axios.post(
-        "https://api.safepay.kg/admin/payment/payments/logs",
+        config.getApiUrl("/admin/payment/payments/logs"),
         { id: row.id }
       );
       setLogs(response.data);
