@@ -1,5 +1,5 @@
 {
-  "name": "backoffice.undefined",
+  "name": "backoffice.maxpay.kz",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -20,7 +20,7 @@
     "web-vitals": "^2.1.4",
     "xlsx": "^0.18.5",
     "xlsx-style": "^0.8.13",
-    "backoffice.undefined": "file:"
+    "backoffice.maxpay.kz": "file:"
   },
   "scripts": {
     "start": "SET PORT=3430 && react-scripts start",
