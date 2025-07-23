@@ -8,9 +8,11 @@ import "./styles.css";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Состояние для отслеживания статуса авторизации
+  const [user, setUser] = useState(null);
 
   // Функция для обработки успешной авторизации
-  const handleLogin = () => {
+  const handleLogin = (data) => {
+    setUser(data);
     setIsLoggedIn(true); // Устанавливаем статус авторизации в true
   };
 
@@ -21,6 +23,11 @@ function App() {
           {/* Условный рендеринг: если пользователь авторизован, отображаем меню и маршруты, иначе отображаем форму входа */}
           {isLoggedIn ? (
             <>
+              <div className="user-info">
+                {user && user.merchant_id && (
+                  <span>Merchant ID: {user.merchant_id}</span>
+                )}
+              </div>
               <nav>
                 <ul>
                   <li>
