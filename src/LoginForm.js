@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import axios from "axios";
 import config from "./config";
+import GatewayAuthService from "./gatewayAuthService";
 import "./styles.css"; // Импорт файла стилей
 
 function LoginForm({ onLogin }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+
+  const authService = new GatewayAuthService(config.API_BASE_URL);
 
   const handleSubmit = async event => {
     event.preventDefault();
@@ -16,32 +18,17 @@ function LoginForm({ onLogin }) {
       return;
     }
 
-    // Разрешенные пользователи (локальная проверка)
-    const validUsers = {
-      p2pBackOfficeUser: "2Jz-uZA-s8i-jRQ!",
-      manager: config.MANAGER_ID
-    };
-
-    if (validUsers[username] && validUsers[username] === password) {
-      onLogin();
-      return;
-    }
-
-    // Попытка авторизации через API
     try {
-      const response = await axios.post(config.getApiUrl("/admin/api/login"), {
-        email: username,
-        password: password
-      });
+      const result = await authService.login(username, password);
 
-      if (response.data.success) {
-        onLogin();
+      if (result.success && result.data && result.data.role === 'merchant') {
+        onLogin(result.data);
       } else {
-        setError("Неверные учетные данные");
+        setError(result.error || 'Неверные учетные данные');
       }
     } catch (error) {
-      console.error("Ошибка при авторизации:", error);
-      setError("Ошибка соединения с сервером");
+      console.error('Ошибка при авторизации:', error);
+      setError('Ошибка соединения с сервером');
     }
   };
 
